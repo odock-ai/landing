@@ -1,3 +1,4 @@
+
 # Sample workflow for building and deploying a Next.js site to GitHub Pages
 #
 # To get started with Next.js see: https://nextjs.org/docs/getting-started
@@ -29,7 +30,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      NEXT_PUBLIC_WEB3FORMS: ${{ secrets.NEXT_PUBLIC_WEB3FORMS }}
+      NEXT_PUBLIC_WEB3FORMS: ${{ secrets.NEXT_PUBLIC_WEB3FORMS }}      
     steps:
       - name: Checkout
         uses: actions/checkout@v4
