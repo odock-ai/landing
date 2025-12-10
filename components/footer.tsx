@@ -4,6 +4,8 @@ import { Github } from 'lucide-react';
 import Image from "next/image";
 import Link from "next/link";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || process.env.PAGES_BASE_PATH || "";
+
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-card/30 backdrop-blur py-12 px-4">
@@ -13,7 +15,7 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-4 justify-center md:justify-start">
               <Image
-                src={`${process.env.PAGES_BASE_PATH || ''}/logo-dark.svg`}
+                src={`${basePath}/logo-dark.svg`}
                 alt="odock.ai logo"
                 width={16}
                 height={16}
@@ -65,7 +67,7 @@ export default function Footer() {
            
             <a href="https://x.com/odock_ai" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">
               <Image
-                src={`${process.env.PAGES_BASE_PATH || ''}/X_logo_2023.svg`}
+                src={`${basePath}/X_logo_2023.svg`}
                 alt="X (Twitter)"
                 width={20}
                 height={20}

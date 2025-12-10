@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || process.env.PAGES_BASE_PATH || '';
+const withBasePath = (path: string) => `${basePath}${path}`;
+
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
@@ -10,22 +13,23 @@ export const metadata: Metadata = {
   title: 'Odock.ai - Unified API Gateway for LLMs & MCP',
   description: 'One unified endpoint for all LLM providers and MCP servers. Enterprise-grade security, quotas, and plugin marketplace.',
   generator: 'v0.app',
+  metadataBase: new URL('https://odock-ai.github.io/landing'),
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
+        url: withBasePath('/icon-light-32x32.png'),
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/icon-dark-32x32.png',
+        url: withBasePath('/icon-dark-32x32.png'),
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/icon.svg',
+        url: withBasePath('/icon.svg'),
         type: 'image/svg+xml',
       },
     ],
-    apple: '/apple-icon.png',
+    apple: withBasePath('/apple-icon.png'),
   },
 }
 

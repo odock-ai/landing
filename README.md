@@ -1,6 +1,6 @@
 # Odock.ai Landing
 
-This repository hosts the Next.js marketing site and waitlist for [Odock.ai](https://odock.ai), the open-source unified API gateway for every LLM provider and MCP server. Odock issues virtual API keys, enforces budgets and security guardrails, and routes requests with plugins and automatic failover—all through a single endpoint.
+This repository hosts the Next.js marketing site and waitlist for [Odock.ai](https://odock.ai), the open-source unified API gateway for every LLM provider and MCP server. Odock issues virtual API keys, enforces budgets and security guardrails, routes requests with plugins and automatic failover—all through a single endpoint.
 
 ## What Odock.ai Delivers
 

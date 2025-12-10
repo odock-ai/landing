@@ -4,9 +4,13 @@ const nextConfig = {
   trailingSlash: true,
   images: { unoptimized: true },
 
-  // IMPORTANT: No basePath or assetPrefix when domain points to root
-  basePath: "",
-  assetPrefix: "",
+  // Github Pages served from https://odock-ai.github.io/landing
+  basePath: "/landing",
+  assetPrefix: "https://odock-ai.github.io/landing",
+  env: {
+    NEXT_PUBLIC_BASE_PATH: "/landing",
+    PAGES_BASE_PATH: "/landing",
+  },
   
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },

@@ -5,6 +5,8 @@ import { Github, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || process.env.PAGES_BASE_PATH || "";
+
 const NAV_LINKS = [
   { href: "#how-it-works", label: "How it works" },
   { href: "#features", label: "Features" },
@@ -26,14 +28,14 @@ export default function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
-          <div className="flex items-center gap-2 drop-shadow-[0_0_4px_rgba(255,255,255,0.6)]">
-            <Image
-              src={`${process.env.PAGES_BASE_PATH || ''}/logo-dark.svg`}
-              alt="odock.ai logo"
-              width={16}
-              height={16}
-              className="h-10 w-10"
-            />
+        <div className="flex items-center gap-2 drop-shadow-[0_0_4px_rgba(255,255,255,0.6)]">
+          <Image
+            src={`${basePath}/logo-dark.svg`}
+            alt="odock.ai logo"
+            width={16}
+            height={16}
+            className="h-10 w-10"
+          />
             <span className="text-2xl font-bold text-foreground">odock.ai</span>
           </div>
 

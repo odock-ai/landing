@@ -7,6 +7,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import HeroBackround from './HeroFigure/hero-backround';
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || process.env.PAGES_BASE_PATH || '';
+
 export default function HeroSection() {
   const scrollToWaitlist = () => {
     const element = document.getElementById('waitlist-section');
@@ -117,7 +119,7 @@ export default function HeroSection() {
             {/* Illustration */}
             <div className="relative  h-full w-full">
               <Image
-                src={`${process.env.PAGES_BASE_PATH || ''}/hero-animation.svg`}
+                src={`${basePath}/hero-animation.svg`}
                 alt="Hero illustration"
                 width={800}
                 height={600}
