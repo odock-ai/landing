@@ -1,0 +1,74 @@
+{
+  "title": "Odock.ai | Unified API Gateway for LLMs & MCP",
+  "titleTemplate": "%s | Odock.ai",
+  "description": "One dock for every LLM provider and MCP server. Unified endpoint, enterprise security guardrails, quota governance, and extensible plugins—without rebuilding integrations.",
+  "canonical": "https://odock.ai/",
+  "keywords": [
+    "LLM gateway",
+    "AI gateway",
+    "MCP server",
+    "API governance",
+    "prompt security",
+    "quota management",
+    "multi-provider routing",
+    "odock.ai"
+  ],
+  "openGraph": {
+    "title": "Odock.ai | Unified API Gateway for LLMs & MCP",
+    "description": "Standardize every AI provider behind a single secure endpoint with quotas, guardrails, and plugins.",
+    "url": "https://odock.ai/",
+    "siteName": "Odock.ai",
+    "images": [
+      {
+        "url": "https://odock.ai/hero-animation.svg",
+        "width": 1200,
+        "height": 630,
+        "alt": "Odock.ai unified API gateway diagram"
+      }
+    ],
+    "locale": "en_US",
+    "type": "website"
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "site": "@odock_ai",
+    "creator": "@odock_ai"
+  },
+  "robots": {
+    "index": true,
+    "follow": true
+  },
+  "schema": {
+    "organization": {
+      "@id": "https://odock.ai/#organization",
+      "name": "Odock.ai",
+      "url": "https://odock.ai",
+      "logo": "https://odock.ai/logo-dark.svg",
+      "sameAs": [
+        "https://github.com/odock-ai",
+        "https://x.com/odock_ai"
+      ]
+    },
+    "website": {
+      "@id": "https://odock.ai/#website",
+      "name": "Odock.ai",
+      "url": "https://odock.ai",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://odock.ai/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    "faq": [],
+    "breadcrumbs": [
+      { "name": "Home", "url": "/" },
+      { "name": "How it works", "url": "/#how-it-works" },
+      { "name": "Features", "url": "/#features" },
+      { "name": "Why it's different", "url": "/#why-different" },
+      { "name": "Use cases", "url": "/#use-cases" },
+      { "name": "Offers", "url": "/#offers" },
+      { "name": "FAQ", "url": "/#faq" },
+      { "name": "Contact", "url": "/#waitlist-section" }
+    ]
+  }
+}

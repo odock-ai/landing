@@ -1,6 +1,6 @@
 'use client';
 
-import landingContent from '@/lib/landing-content.json';
+import landingContent from '@/data/landing-content.json';
 import { getIconByName } from '@/lib/icon-map';
 import { Card } from '@/components/ui/card';
 import { motion, useScroll, useTransform } from "framer-motion"

@@ -4,18 +4,11 @@ import { useState } from "react";
 import { Github, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import landingContent from "@/data/landing-content.json";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || process.env.PAGES_BASE_PATH || "";
 
-const NAV_LINKS = [
-  { href: "#how-it-works", label: "How it works" },
-  { href: "#features", label: "Features" },
-  { href: "#why-different", label: "Why it's different" },
-  { href: "#use-cases", label: "Use cases" },
-  { href: "#offers", label: "Offers" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#waitlist-section", label: "Contact" },
-];
+const { header } = landingContent;
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,17 +24,17 @@ export default function Header() {
         <div className="flex items-center gap-2 drop-shadow-[0_0_4px_rgba(255,255,255,0.6)]">
           <Image
             src={`${basePath}/logo-dark.svg`}
-            alt="odock.ai logo"
+            alt={header.brand.logoAlt}
             width={16}
             height={16}
             className="h-10 w-10"
           />
-            <span className="text-2xl font-bold text-foreground">odock.ai</span>
+            <span className="text-2xl font-bold text-foreground">{header.brand.name}</span>
           </div>
 
           {/* Navigation */}
           <nav className="hidden items-center gap-8 md:flex">
-            {NAV_LINKS.map((link) => (
+            {header.navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -66,8 +59,8 @@ export default function Header() {
             </div>
 
             <div className="hidden md:flex items-center gap-3">
-              <a href="https://github.com/odock-ai" target="_blank" rel="noopener noreferrer">
-                <Button variant="ghost" size="icon">
+              <a href={header.cta.githubUrl} target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="icon" aria-label={header.cta.githubLabel}>
                   <Github className="h-4 w-4" />
                 </Button>
               </a>
@@ -75,7 +68,7 @@ export default function Header() {
                 className="bg-accent text-accent-foreground hover:bg-accent/90"
                 onClick={() => document.getElementById("waitlist-section")?.scrollIntoView({ behavior: "smooth" })}
               >
-                Join Waitlist
+                {header.cta.primaryLabel}
               </Button>
             </div>
           </div>
@@ -89,7 +82,7 @@ export default function Header() {
         >
           <div className="rounded-2xl border border-border/60 bg-background/90 p-4 shadow-lg">
             <nav className="flex flex-col gap-3 items-center">
-            {NAV_LINKS.map((link) => (
+            {header.navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
@@ -102,7 +95,7 @@ export default function Header() {
             </nav>
             <div className="mt-4 flex flex-col gap-3">
             <a
-              href="https://github.com/odock-ai"
+              href={header.cta.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={closeMenu}
@@ -112,7 +105,7 @@ export default function Header() {
                 className="flex w-full items-center justify-center gap-2"
               >
                 <Github className="h-4 w-4" />
-                <span>View on GitHub</span>
+                <span>{header.cta.githubLabel}</span>
               </Button>
             </a>
             <Button
@@ -122,7 +115,7 @@ export default function Header() {
                 document.getElementById('waitlist-section')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              Join Waitlist
+              {header.cta.primaryLabel}
             </Button>
           </div>
           </div>

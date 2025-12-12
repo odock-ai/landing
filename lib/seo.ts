@@ -1,0 +1,107 @@
+import type { Metadata } from 'next';
+import landingContent from '@/data/landing-content.json';
+import landingSeo from '@/data/landing-seo.json';
+
+type Breadcrumb = { name: string; url: string };
+
+const canonicalBase = landingSeo.canonical?.replace(/\/$/, '') || '';
+
+const normalizeUrl = (url: string) => {
+  if (!url) return canonicalBase;
+  if (url.startsWith('http')) return url;
+  const cleanPath = url.startsWith('/') ? url.slice(1) : url;
+  return canonicalBase ? `${canonicalBase}/${cleanPath}` : `/${cleanPath}`;
+};
+
+export function buildMetadata(): Metadata {
+  const ogImages = landingSeo.openGraph?.images?.map((image) => ({
+    ...image,
+    url: normalizeUrl(image.url),
+  }));
+
+  const title =
+    landingSeo.titleTemplate && landingSeo.title
+      ? { default: landingSeo.title, template: landingSeo.titleTemplate }
+      : landingSeo.title;
+
+  return {
+    title,
+    description: landingSeo.description,
+    keywords: landingSeo.keywords,
+    metadataBase: canonicalBase ? new URL(canonicalBase) : undefined,
+    alternates: {
+      canonical: landingSeo.canonical,
+    },
+    robots: {
+      index: landingSeo.robots?.index ?? true,
+      follow: landingSeo.robots?.follow ?? true,
+    },
+    openGraph: {
+      ...landingSeo.openGraph,
+      url: landingSeo.openGraph?.url || landingSeo.canonical,
+      images: ogImages,
+    },
+    twitter: landingSeo.twitter,
+  };
+}
+
+export function buildStructuredData() {
+  const faqItems =
+    landingContent.faq?.items?.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })) || [];
+
+  const breadcrumbItems =
+    landingSeo.schema?.breadcrumbs?.map((crumb: Breadcrumb, index: number) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: crumb.name,
+      item: normalizeUrl(crumb.url),
+    })) || [];
+
+  const organization =
+    landingSeo.schema?.organization && Object.keys(landingSeo.schema.organization).length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'Organization',
+          ...landingSeo.schema.organization,
+          url: normalizeUrl(landingSeo.schema.organization.url),
+          logo: normalizeUrl((landingSeo.schema.organization as unknown as Record<string, string>).logo || ''),
+        }
+      : null;
+
+  const website =
+    landingSeo.schema?.website && Object.keys(landingSeo.schema.website).length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          ...landingSeo.schema.website,
+          url: normalizeUrl(landingSeo.schema.website.url),
+        }
+      : null;
+
+  const breadcrumbList =
+    breadcrumbItems.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: breadcrumbItems,
+        }
+      : null;
+
+  const faq =
+    faqItems.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqItems,
+        }
+      : null;
+
+  return [organization, website, breadcrumbList, faq].filter(Boolean);
+}

@@ -1,4 +1,134 @@
 {
+  "header": {
+    "brand": {
+      "name": "odock.ai",
+      "logoAlt": "odock.ai logo"
+    },
+    "navLinks": [
+      { "href": "#how-it-works", "label": "How it works" },
+      { "href": "#features", "label": "Features" },
+      { "href": "#why-different", "label": "Why it's different" },
+      { "href": "#use-cases", "label": "Use cases" },
+      { "href": "#offers", "label": "Offers" },
+      { "href": "#faq", "label": "FAQ" },
+      { "href": "#waitlist-section", "label": "Contact" }
+    ],
+    "cta": {
+      "primaryLabel": "Join Waitlist",
+      "githubLabel": "View on GitHub",
+      "githubUrl": "https://github.com/odock-ai"
+    }
+  },
+  "hero": {
+    "badge": "Coming Soon • Open Source",
+    "headline": "One Dock for",
+    "rotatingWords": ["OpenAI", "Anthropic", "vLLM", "DeepSeek", "MCP Servers", "Every Model"],
+    "subheadline": "Unified API gateway for all AI models and tools. Enterprise security, quota governance, and extensible plugins—through one single endpoint.",
+    "emailPlaceholder": "Your email address",
+    "ctaText": "Early access",
+    "imageAlt": "Hero illustration"
+  },
+  "waitlistForm": {
+    "successTitle": "You're on the list!",
+    "successDescription": "Check your email for early access updates and exclusive previews.",
+    "fields": {
+      "nameLabel": "Name",
+      "namePlaceholder": "Your name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "your@email.com",
+      "roleLabel": "Your Role",
+      "rolePlaceholder": "Select your role",
+      "teamSizeLabel": "Team Size",
+      "teamSizeHint": "(optional)",
+      "teamSizePlaceholder": "Select team size"
+    },
+    "roles": ["CEO", "Developer", "CTO", "Product Manager", "Founder", "Other"],
+    "teamSizes": ["10", "50", "100", "500", "500+"],
+    "submitText": "Join the Waitlist",
+    "submittingText": "Joining..."
+  },
+  "contact": {
+    "id": "waitlist-section",
+    "badge": "Contact",
+    "title": "Talk with our team",
+    "description": "Get a tailored walkthrough of Odock.ai and see how a unified API gateway can simplify model routing, governance, and enterprise controls for your organization.",
+    "highlights": [
+      "Enterprise support and SLAs",
+      "Security and compliance reviews",
+      "Model-agnostic routing and governance",
+      "Private cloud and on-prem options"
+    ],
+    "contactEmail": "hello@odock.ai",
+    "githubUrl": "https://github.com/odock-ai",
+    "githubLabel": "github.com/odock-ai",
+    "emailCopy": "Prefer email? Reach us at",
+    "emailResponseTime": "and we'll respond within one business day.",
+    "githubCopy": "Want to contribute to our open-source project? Visit our GitHub at",
+    "organizationSizes": [
+      { "value": "1-50", "label": "1-50 employees" },
+      { "value": "51-200", "label": "51-200 employees" },
+      { "value": "201-500", "label": "201-500 employees" },
+      { "value": "501-1000", "label": "501-1000 employees" },
+      { "value": "1001+", "label": "1001+ employees" },
+      { "value": "government", "label": "Government Agency" }
+    ],
+    "form": {
+      "title": "Contact our team",
+      "description": "Share a few details so we can prep the right demo and guidance for you.",
+      "successTitle": "Thank you!",
+      "successDescription": "Your inquiry is in. Our team will reach out shortly with next steps tailored to your environment.",
+      "successCta": "Submit another inquiry",
+      "submitText": "Request information",
+      "submittingText": "Submitting...",
+      "disclaimer": "By submitting this form, you agree to our privacy policy and terms of service.",
+      "fields": {
+        "firstName": { "label": "First Name", "placeholder": "Alex" },
+        "lastName": { "label": "Last Name", "placeholder": "Doe" },
+        "email": { "label": "Work Email", "placeholder": "alex.doe@company.com" },
+        "company": { "label": "Company/Organization", "placeholder": "Acme Inc." },
+        "role": { "label": "Your Role", "placeholder": "CTO, IT Director, etc." },
+        "size": { "label": "Organization Size", "placeholder": "Select size" },
+        "offer": { "label": "Offer you're interested in", "placeholder": "Select an offer" },
+        "message": { "label": "How can we help?", "placeholder": "Tell us about your specific requirements..." }
+      }
+    }
+  },
+  "footer": {
+    "brand": {
+      "name": "odock.ai",
+      "logoAlt": "odock.ai logo"
+    },
+    "description": "Unified API gateway for all LLM providers and MCP servers.",
+    "linkGroups": [
+      {
+        "title": "Product",
+        "links": [
+          { "label": "How it works", "href": "/#how-it-works" },
+          { "label": "Features", "href": "/#features" },
+          { "label": "Offers", "href": "/#offers" }
+        ]
+      },
+      {
+        "title": "Community",
+        "links": [
+          { "label": "GitHub", "href": "https://github.com/odock-ai" },
+          { "label": "X", "href": "https://x.com/odock_ai" }
+        ]
+      },
+      {
+        "title": "Legal",
+        "links": [
+          { "label": "Privacy", "href": "/privacy" },
+          { "label": "Terms", "href": "/terms" }
+        ]
+      }
+    ],
+    "social": [
+      { "type": "github", "href": "https://github.com/odock-ai", "label": "GitHub" },
+      { "type": "x", "href": "https://x.com/odock_ai", "label": "X (Twitter)" }
+    ],
+    "copyright": "© 2025 Odock.ai. Made for developers by developers."
+  },
   "howItWorks": {
     "id": "how-it-works",
     "title": "How Odock.ai Works",
@@ -164,6 +294,7 @@
       "secondaryButtonText": "Join the Waitlist",
       "cardButtonText": "Learn More"
     },
+    "highlightLabel": "BEST",
     "plans": [
       {
         "title": "Open Source",
@@ -247,6 +378,11 @@
   "whyDifferent": {
     "title": "Why It's Different",
     "description": "Unlike traditional API gateways, Odock.ai is built specifically for LLMs with enterprise security baked in from day one.",
+    "codeCard": {
+      "title": "OpenAI-style usage",
+      "badge": "Drop-in compatible",
+      "description": "Just replace the URL and virtual API key."
+    },
     "layout": {
       "grid": {
         "gap": "gap-12",

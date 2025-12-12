@@ -1,6 +1,6 @@
 'use client';
 
-import landingContent from '@/lib/landing-content.json';
+import landingContent from '@/data/landing-content.json';
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { ChevronDown } from 'lucide-react';

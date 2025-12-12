@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import landingContent from '@/lib/landing-content.json';
+import landingContent from '@/data/landing-content.json';
 import { buildGridClasses } from '@/lib/layout';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { CheckCircle } from 'lucide-react';
@@ -286,7 +286,7 @@ export default function WhyDifferent() {
             <div className="mb-4 flex items-center justify-between gap-2">
               <div className="space-y-1">
                 <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                  OpenAI-style usage
+                  {whyDifferent.codeCard.title}
                 </p>
               </div>
 
@@ -294,12 +294,12 @@ export default function WhyDifferent() {
                 variant="default"
                 className="rounded-full px-3 py-1 text-[11px] font-mono uppercase tracking-wide "
               >
-                Drop-in compatible
+                {whyDifferent.codeCard.badge}
               </Badge>
             </div>
 
             <p className="text-sm text-muted-foreground">
-              Just replace the URL and virtual API key.
+              {whyDifferent.codeCard.description}
             </p>
             {/* Language tabs */}
             <div className="mb-3 flex flex-wrap gap-2 text-xs font-mono">

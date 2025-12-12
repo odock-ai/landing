@@ -1,6 +1,6 @@
 'use client';
 
-import landingContent from '@/lib/landing-content.json';
+import landingContent from '@/data/landing-content.json';
 import { buildGridClasses } from '@/lib/layout';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -35,7 +35,7 @@ export default function Offers() {
             >
               {offering.highlight && (
                 <div className="absolute top-0 right-0 bg-accent text-accent-foreground px-3 py-1 text-xs font-semibold rounded-bl">
-                  BEST
+                  {offers.highlightLabel}
                 </div>
               )}
               

@@ -6,8 +6,10 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import HeroBackround from './HeroFigure/hero-backround';
+import landingContent from '@/data/landing-content.json';
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || process.env.PAGES_BASE_PATH || '';
+const { hero } = landingContent;
 
 export default function HeroSection() {
   const scrollToWaitlist = () => {
@@ -15,20 +17,11 @@ export default function HeroSection() {
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const rotatingWords = [
-    'OpenAI',
-    'Anthropic',
-    'vLLM',
-    'DeepSeek',
-    'MCP Servers',
-    'Every Model',
-  ];
-
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % rotatingWords.length);
+      setIndex((prev) => (prev + 1) % hero.rotatingWords.length);
     }, 1800);
 
     return () => clearInterval(interval);
@@ -55,13 +48,13 @@ export default function HeroSection() {
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2">
             <Zap className="h-4 w-4 text-accent" />
             <span className="text-sm text-muted-foreground">
-              Coming Soon • Open Source
+              {hero.badge}
             </span>
           </div>
 
           {/* Headline */}
           <h1 className="mb-6 text-4xl font-bold leading-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
-            One Dock for
+            {hero.headline}
             <br />
             <span className="inline-flex h-16 items-center bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
               <AnimatePresence mode="wait">
@@ -72,12 +65,12 @@ export default function HeroSection() {
                   exit={{ opacity: 0, y: 40 }}
                   transition={{ duration: 0.45 }}
                   className={
-                    index === rotatingWords.length - 1
+                    index === hero.rotatingWords.length - 1
                       ? 'inline-block bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent'
                       : 'inline-block font-bold text-white'
                   }
                 >
-                  {rotatingWords[index]}
+                  {hero.rotatingWords[index]}
                 </motion.span>
               </AnimatePresence>
             </span>
@@ -85,8 +78,7 @@ export default function HeroSection() {
 
           {/* Subheadline */}
           <p className="mb-8 max-w-2xl text-balance text-md text-muted-foreground md:text-lg">
-            Unified API gateway for all AI models and tools. Enterprise security,
-            quota governance, and extensible plugins—through one single endpoint.
+            {hero.subheadline}
           </p>
 
           {/* CTA input + button */}
@@ -94,14 +86,14 @@ export default function HeroSection() {
             <div className="flex w-full max-w-md items-center overflow-hidden rounded-lg border border-border bg-card">
               <input
                 type="email"
-                placeholder="Your email address"
+                placeholder={hero.emailPlaceholder}
                 className="flex-1 bg-transparent px-4 text-foreground placeholder:text-muted-foreground focus:outline-none"
               />
               <Button
                 onClick={scrollToWaitlist}
                 className="h-full rounded-none bg-accent px-5 text-accent-foreground font-semibold"
               >
-                Early access
+                {hero.ctaText}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
@@ -120,7 +112,7 @@ export default function HeroSection() {
             <div className="relative  h-full w-full">
               <Image
                 src={`${basePath}/hero-animation.svg`}
-                alt="Hero illustration"
+                alt={hero.imageAlt}
                 width={800}
                 height={600}
                 className="h-full w-full object-contain"

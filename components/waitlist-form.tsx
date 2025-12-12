@@ -4,6 +4,9 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ArrowRight } from 'lucide-react';
+import landingContent from '@/data/landing-content.json';
+
+const { waitlistForm } = landingContent;
 
 export default function WaitlistForm() {
   const [formData, setFormData] = useState({ 
@@ -15,8 +18,8 @@ export default function WaitlistForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const roles = ['CEO', 'Developer', 'CTO', 'Product Manager', 'Founder', 'Other'];
-  const teamSizes = ['10', '50', '100', '500', '500+'];
+  const roles = waitlistForm.roles;
+  const teamSizes = waitlistForm.teamSizes;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,10 +42,8 @@ export default function WaitlistForm() {
     return (
       <div className="mx-auto max-w-md rounded-lg border border-accent/20 bg-card p-8 text-center">
         <div className="mb-4 text-4xl">✨</div>
-        <p className="text-foreground font-semibold mb-2 text-lg">You're on the list!</p>
-        <p className="text-sm text-muted-foreground">
-          Check your email for early access updates and exclusive previews.
-        </p>
+        <p className="text-foreground font-semibold mb-2 text-lg">{waitlistForm.successTitle}</p>
+        <p className="text-sm text-muted-foreground">{waitlistForm.successDescription}</p>
       </div>
     );
   }
@@ -51,10 +52,10 @@ export default function WaitlistForm() {
     <form onSubmit={handleSubmit} className="mx-auto max-w-md space-y-5">
       {/* Name */}
       <div className="space-y-2">
-        <label className="text-sm font-medium text-foreground">Name</label>
+        <label className="text-sm font-medium text-foreground">{waitlistForm.fields.nameLabel}</label>
         <Input
           type="text"
-          placeholder="Your name"
+          placeholder={waitlistForm.fields.namePlaceholder}
           required
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -64,10 +65,10 @@ export default function WaitlistForm() {
 
       {/* Email */}
       <div className="space-y-2">
-        <label className="text-sm font-medium text-foreground">Email</label>
+        <label className="text-sm font-medium text-foreground">{waitlistForm.fields.emailLabel}</label>
         <Input
           type="email"
-          placeholder="your@email.com"
+          placeholder={waitlistForm.fields.emailPlaceholder}
           required
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -77,14 +78,14 @@ export default function WaitlistForm() {
 
       {/* Role */}
       <div className="space-y-2">
-        <label className="text-sm font-medium text-foreground">Your Role</label>
+        <label className="text-sm font-medium text-foreground">{waitlistForm.fields.roleLabel}</label>
         <select
           required
           value={formData.role}
           onChange={(e) => setFormData({ ...formData, role: e.target.value })}
           className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"
         >
-          <option value="">Select your role</option>
+          <option value="">{waitlistForm.fields.rolePlaceholder}</option>
           {roles.map((role) => (
             <option key={role} value={role}>{role}</option>
           ))}
@@ -93,13 +94,15 @@ export default function WaitlistForm() {
 
       {/* Team Size */}
       <div className="space-y-2">
-        <label className="text-sm font-medium text-foreground">Team Size <span className="text-muted-foreground">(optional)</span></label>
+        <label className="text-sm font-medium text-foreground">
+          {waitlistForm.fields.teamSizeLabel} <span className="text-muted-foreground">{waitlistForm.fields.teamSizeHint}</span>
+        </label>
         <select
           value={formData.teamSize}
           onChange={(e) => setFormData({ ...formData, teamSize: e.target.value })}
           className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"
         >
-          <option value="">Select team size</option>
+          <option value="">{waitlistForm.fields.teamSizePlaceholder}</option>
           {teamSizes.map((size) => (
             <option key={size} value={size}>{size} people</option>
           ))}
@@ -112,9 +115,9 @@ export default function WaitlistForm() {
         disabled={loading}
         className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold group mt-6"
       >
-        {loading ? 'Joining...' : (
+        {loading ? waitlistForm.submittingText : (
           <>
-            Join the Waitlist
+            {waitlistForm.submitText}
             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </>
         )}
